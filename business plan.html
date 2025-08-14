@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多伦多Stouffville体育中心商业计划书</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e6f0fa 100%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 200px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        section {
+            padding: 60px 30px;
+            background: white;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .market-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .market-card {
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .market-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .market-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+        
+        .market-card h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 1.6rem;
+        }
+        
+        .market-card ul {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        .market-card li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.7;
+            list-style-type: disc;
+        }
+        
+        .data-source {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .data-source a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .data-source a:hover {
+            text-decoration: underline;
+        }
+        
+        .court-diagrams {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .court-diagram {
+            text-align: center;
+            flex: 1;
+            min-width: 350px;
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .court-diagram img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .court-diagram img:hover {
+            transform: scale(1.03);
+        }
+        
+        .court-diagram h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .facility-designs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .design-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .design-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .design-img {
+            height: 200px;
+            background-color: #f0f7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .design-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .design-content {
+            padding: 25px;
+        }
+        
+        .design-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .design-features {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .design-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        
+        .design-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .design-features i {
+            color: var(--success);
+            margin-right: 10px;
+            min-width: 24px;
+            font-size: 1.2rem;
+        }
+        
+        .cost-section {
+            background: #f9fbfd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 1.05rem;
+        }
+        
+        .cost-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            padding-top: 15px;
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+        
+        .financial-section {
+            background: linear-gradient(to bottom, #f0f7ff, #e6f0fa);
+        }
+        
+        .financial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .financial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+        
+        .financial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .financial-card h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+        
+        .financial-card h3 i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.05rem;
+        }
+        
+        .cost-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            padding-top: 20px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .chart-container {
+            height: 450px;
+            margin: 50px 0 30px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .roi-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+        }
+        
+        .roi-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .roi-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px 25px;
+            width: 280px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e6ed;
+        }
+        
+        .roi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .roi-card h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .roi-card h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .roi-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 25px 0;
+            letter-spacing: -1px;
+        }
+        
+        .good {
+            color: var(--success);
+        }
+        
+        .medium {
+            color: var(--warning);
+        }
+        
+        .bad {
+            color: var(--accent);
+        }
+        
+        .roi-card p {
+            margin: 8px 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .roi-improvement {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: left;
+        }
+        
+        .improvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .improvement-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--success);
+        }
+        
+        .improvement-card h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .improvement-card h4 i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+        
+        .improvement-card ul {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        .improvement-card li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .pricing-card h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+        
+        .pricing-card h3 i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.05rem;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            padding-top: 20px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 20px 40px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 50,30 100,0 100,100 0,100" fill="rgba(0,0,0,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            margin: 30px 0;
+            font-size: 1.15rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 1.4rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            min-width: 280px;
+        }
+        
+        .action-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .action-button.outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .action-button.outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0 50px;
+        }
+        
+        .nav-btn {
+            background: var(--light);
+            color: var(--dark);
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--light);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .reference-section {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 50px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .reference-section h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        .reference-section h3 i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        
+        .reference-item {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .reference-item::before {
+            content: "•";
+            position: absolute;
+            left: 15px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            top: -5px;
+        }
+        
+        .reference-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .reference-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .financial-note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .financial-note strong {
+            color: #e74c3c;
+        }
+        
+        /* 新增详细财务表格样式 */
+        .financial-detail-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .financial-detail-table th {
+            background: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .financial-detail-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .financial-detail-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .financial-detail-table .sub-header {
+            background: #f0f7ff;
+            font-weight: 600;
+        }
+        
+        .financial-detail-table .highlight {
+            background: #e8f4e8;
+            font-weight: 700;
+            color: var(--success);
+        }
+        
+        .financial-detail-table .summary-row {
+            background: #f0f7ff;
+            font-weight: 700;
+        }
+        
+        .financial-detail-table .total-row {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+        
+        .financial-detail-table .roi-row {
+            background: #e8f4e8;
+            font-weight: 700;
+            color: var(--success);
+        }
+        
+        .roi-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .roi-detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .roi-detail-card h3 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            font-size: 1.6rem;
+        }
+        
+        .facility-config {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9fbfd;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .facility-config div {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .facility-config h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .facility-config ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .facility-config li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .roi-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+            }
+            
+            .court-diagrams {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .court-diagram {
+                width: 100%;
+            }
+            
+            .roi-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .facility-config {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>多伦多Stouffville体育中心</h1>
+            <div class="subtitle">创新运动空间 · 智能运营管理 · 高回报投资方案</div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">40,000 ft²</div>
+                    <div class="stat-label">场地面积</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$6M</div>
+                    <div class="stat-label">总投资</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">5.2-7.7年</div>
+                    <div class="stat-label">投资回收期</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">13.1-20.5%</div>
+                    <div class="stat-label">投资回报率</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="section-nav">
+            <a href="#market" class="nav-btn active"><i class="fas fa-chart-line"></i> 市场分析</a>
+            <a href="#design" class="nav-btn"><i class="fas fa-drafting-compass"></i> 场地设计</a>
+            <a href="#pricing" class="nav-btn"><i class="fas fa-tags"></i> 定价策略</a>
+            <a href="#cost" class="nav-btn"><i class="fas fa-calculator"></i> 成本分析</a>
+            <a href="#financial" class="nav-btn"><i class="fas fa-coins"></i> 财务预测</a>
+            <a href="#roi" class="nav-btn"><i class="fas fa-chart-pie"></i> 投资回报</a>
+        </div>
+        
+        <section id="market">
+            <div class="section-header">
+                <h2>市场分析与行业背景</h2>
+                <p>基于加拿大体育产业数据和约克区市场研究的深入分析</p>
+            </div>
+
+            <div class="market-analysis">
+                <div class="market-card">
+                    <h3><i class="fas fa-shuttlecock"></i> 羽毛球市场分析</h3>
+                    <ul>
+                        <li>加拿大羽毛球协会报告：全加拿大每年有超过100万羽毛球用户</li>
+                        <li>约克区商业化羽毛球场仅20间，平均6-8个场地/场馆</li>
+                        <li>现有场馆利用率高峰期超过90%，存在明显市场缺口</li>
+                        <li>华人社区对羽毛球需求尤其旺盛，占用户群体的42%</li>
+                        <li>青少年羽毛球培训市场年增长率达15%</li>
+                    </ul>
+                    <div class="data-source">
+                        <strong>数据来源：</strong> 
+                        <a href="https://www.canadahelps.org/en/charities/badminton-canada/#:~:text=Badminton%20Canada%20estimates%20that%20over,Canada%20on%20an%20annual%20basis" target="_blank">
+                            加拿大羽毛球协会报告
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="market-card">
+                    <h3><i class="fas fa-baseball-ball"></i> 匹克球与网球市场</h3>
+                    <ul>
+                        <li>2023年加拿大网球用户接近500万，同比增长20%</li>
+                        <li>约克区商业化室内网球场仅10间，平均3个场地/场馆</li>
+                        <li>公共网球场冬季关闭，室内场地需求旺盛</li>
+                        <li>匹克球为北美增长最快的运动（年增长率30%）</li>
+                        <li>55岁以上人群是匹克球的主要参与者（占68%）</li>
+                    </ul>
+                    <div class="data-source">
+                        <strong>数据来源：</strong> 
+                        <a href="https://www.tenniscanada.com/news/pro-tennis/2024/tennis-in-canada-is-on-the-rise-and-youth-are-leading-the-charge" target="_blank">
+                            Tennis Canada报告
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="market-card">
+                    <h3><i class="fas fa-users"></i> 目标客户群体</h3>
+                    <ul>
+                        <li>核心半径：场馆20公里范围内居民（约35万人口）</li>
+                        <li>主要群体：25-55岁专业人士、55岁以上活跃银发族</li>
+                        <li>次要群体：青少年运动队、企业团体活动</li>
+                        <li>Stouffville地区人口增长：年增长率3.2%（安省平均1.8%）</li>
+                        <li>家庭平均收入：$125,000 (高于安省平均水平$95,000)</li>
+                    </ul>
+                    <div class="data-source">
+                        <strong>数据来源：</strong> 
+                        <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E" target="_blank">
+                            加拿大统计局2021年人口普查
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="marketTrendChart"></canvas>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-book"></i> 市场分析参考来源</h3>
+                <div class="reference-item">
+                    <strong>加拿大体育参与率：</strong> 加拿大遗产部体育参与调查报告
+                    <a href="https://www.canada.ca/en/canadian-heritage/services/sport-participation.html" target="_blank">查看报告</a>
+                </div>
+                <div class="reference-item">
+                    <strong>约克区人口统计：</strong> 约克区政府官方人口数据
+                    <a href="https://www.york.ca/wps/portal/yorkhome" target="_blank">数据来源</a>
+                </div>
+                <div class="reference-item">
+                    <strong>羽毛球市场分析：</strong> 加拿大羽毛球协会年度报告
+                    <a href="https://badminton.ca/" target="_blank">官网参考</a>
+                </div>
+                <div class="reference-item">
+                    <strong>匹克球增长趋势：</strong> 美国匹克球协会行业报告
+                    <a href="https://usapickleball.org/" target="_blank">行业报告</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="design">
+            <div class="section-header">
+                <h2>场馆规划与设计方案</h2>
+                <p>40,000平方英尺空间的创新性优化利用方案</p>
+            </div>
+            
+            <div class="court-diagrams">
+                <div class="court-diagram">
+                    <h3>标准羽毛球场尺寸</h3>
+                    <img src="https://www.teachpe.com/images/badminton/badminton-court2.jpg" alt="羽毛球场尺寸图">
+                    <p>标准尺寸：13.4m × 6.1m (44ft × 20ft)<br>单块面积：81.74 m² (880 ft²)</p>
+                </div>
+                
+                <div class="court-diagram">
+                    <h3>标准匹克球场尺寸</h3>
+                    <img src="https://crowall.ca/wp-content/uploads/2024/06/standard-pickleball-court-dimensions.webp" alt="匹克球场尺寸图">
+                    <p>标准尺寸：6.1m × 13.4m (20ft × 44ft)<br>单块面积：81.80 m² (880 ft²)</p>
+                </div>
+            </div>
+
+            <div class="facility-designs">
+                <div class="design-card">
+                    <div class="design-img" style="background: #e3f2fd;">
+                        <i class="fas fa-exchange-alt" style="color: #3498db; font-size: 4rem;"></i>
+                        <div class="design-badge">推荐方案</div>
+                    </div>
+                    <div class="design-content">
+                        <h3 class="design-title">混合型方案 (6羽毛球 + 14匹克球)</h3>
+                        <ul class="design-features">
+                            <li><i class="fas fa-check"></i> 满足最低6个羽毛球场要求</li>
+                            <li><i class="fas fa-check"></i> 最大化匹克球高收益场地</li>
+                            <li><i class="fas fa-check"></i> 可转换隔断系统（10分钟转换）</li>
+                            <li><i class="fas fa-check"></i> 剩余空间：1,080 ft²（多功能区）</li>
+                            <li><i class="fas fa-check"></i> 服务区：3,000 ft²（接待/休息）</li>
+                        </ul>
+                        <div class="cost-section">
+                            <div class="cost-row">
+                                <span>场地建设：</span>
+                                <span>$5,000,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>可转换系统：</span>
+                                <span>$120,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>剩余空间利用：</span>
+                                <span>$80,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>总成本：</span>
+                                <span>$5,200,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-img" style="background: #ffebee;">
+                        <i class="fas fa-basketball-ball" style="color: #e74c3c; font-size: 4rem;"></i>
+                    </div>
+                    <div class="design-content">
+                        <h3 class="design-title">多功能方案 (4羽毛球 + 12匹克球 + 2篮球)</h3>
+                        <ul class="design-features">
+                            <li><i class="fas fa-check"></i> 2个标准篮球半场（可转换）</li>
+                            <li><i class="fas fa-check"></i> 青少年体育项目开发</li>
+                            <li><i class="fas fa-check"></i> 企业团队建设活动空间</li>
+                            <li><i class="fas fa-check"></i> 专业运动地板系统</li>
+                            <li><i class="fas fa-check"></i> 服务区：3,500 ft²（含更衣室）</li>
+                        </ul>
+                        <div class="cost-section">
+                            <div class="cost-row">
+                                <span>场地建设：</span>
+                                <span>$5,100,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>运动地板系统：</span>
+                                <span>$180,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>篮球设施：</span>
+                                <span>$75,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>总成本：</span>
+                                <span>$5,355,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-img" style="background: #e8f5e9;">
+                        <i class="fas fa-golf-ball" style="color: #27ae60; font-size: 4rem;"></i>
+                    </div>
+                    <div class="design-content">
+                        <h3 class="design-title">高端方案 (4羽毛球 + 10匹克球 + 4高尔夫)</h3>
+                        <ul class="design-features">
+                            <li><i class="fas fa-check"></i> 4个室内高尔夫模拟器</li>
+                            <li><i class="fas fa-check"></i> 高利润率增值服务</li>
+                            <li><i class="fas fa-check"></i> 全年无休高尔夫体验</li>
+                            <li><i class="fas fa-check"></i> 专业教练指导服务</li>
+                            <li><i class="fas fa-check"></i> 贵宾休息区：1,200 ft²</li>
+                        </ul>
+                        <div class="cost-section">
+                            <div class="cost-row">
+                                <span>场地建设：</span>
+                                <span>$5,000,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>高尔夫模拟器：</span>
+                                <span>$400,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>贵宾区装修：</span>
+                                <span>$150,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>总成本：</span>
+                                <span>$5,550,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="design-card">
+                    <div class="design-img" style="background: #fff3e0;">
+                        <i class="fas fa-dumbbell" style="color: #f39c12; font-size: 4rem;"></i>
+                    </div>
+                    <div class="design-content">
+                        <h3 class="design-title">健身中心方案 (5羽毛球 + 10匹克球 + 健身区)</h3>
+                        <ul class="design-features">
+                            <li><i class="fas fa-check"></i> 专业健身区（1500 ft²）</li>
+                            <li><i class="fas fa-check"></i> 团体训练工作室</li>
+                            <li><i class="fas fa-check"></i> 私教课程服务</li>
+                            <li><i class="fas fa-check"></i> 健康饮品吧</li>
+                            <li><i class="fas fa-check"></i> 月会员制收入模式</li>
+                        </ul>
+                        <div class="cost-section">
+                            <div class="cost-row">
+                                <span>场地建设：</span>
+                                <span>$5,000,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>健身器材：</span>
+                                <span>$250,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>工作室装修：</span>
+                                <span>$120,000</span>
+                            </div>
+                            <div class="cost-row">
+                                <span>总成本：</span>
+                                <span>$5,370,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-ruler-combined"></i> 场地设计参考标准</h3>
+                <div class="reference-item">
+                    <strong>羽毛球场标准：</strong> 国际羽毛球联合会(BWF)场地规格
+                    <a href="https://corporate.bwfbadminton.com/" target="_blank">官方标准</a>
+                </div>
+                <div class="reference-item">
+                    <strong>匹克球场标准：</strong> 国际匹克球联合会(IFP)比赛场地要求
+                    <a href="https://www.ipickleball.org/" target="_blank">规格参考</a>
+                </div>
+                <div class="reference-item">
+                    <strong>运动地板系统：</strong> Connor Sports专业运动地板规格
+                    <a href="https://www.connorsports.com/" target="_blank">技术参数</a>
+                </div>
+                <div class="reference-item">
+                    <strong>场馆安全标准：</strong> 加拿大国家建筑规范(NBC)商业体育设施要求
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing">
+            <div class="section-header">
+                <h2>场地定价策略</h2>
+                <p>基于市场调研和需求弹性分析的分级定价模型</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3><i class="fas fa-shuttlecock"></i> 羽毛球定价</h3>
+                    <div class="price-item">
+                        <span>高峰时段 (17:00-21:00)</span>
+                        <span>$25/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>平峰时段 (12:00-17:00)</span>
+                        <span>$20/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>低峰时段 (9:00-12:00)</span>
+                        <span>$15/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>银发专场 (工作日早场)</span>
+                        <span>$12/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>企业包场 (2小时起)</span>
+                        <span>$400/场</span>
+                    </div>
+                    <div class="price-item">
+                        <span>月会员 (20小时)</span>
+                        <span>$360</span>
+                    </div>
+                    <div class="price-item">
+                        <span>预计日均收入/场</span>
+                        <span class="price-highlight">$155</span>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3><i class="fas fa-baseball-ball"></i> 匹克球定价</h3>
+                    <div class="price-item">
+                        <span>高峰时段 (17:00-21:00)</span>
+                        <span>$33/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>平峰时段 (12:00-17:00)</span>
+                        <span>$26/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>低峰时段 (9:00-12:00)</span>
+                        <span>$20/小时</span>
+                    </div>
+                    <div class="price-item">
+                        <span>团体训练 (3小时套餐)</span>
+                        <span>$85/组</span>
+                    </div>
+                    <div class="price-item">
+                        <span>联赛专用 (周末全天)</span>
+                        <span>$250/场</span>
+                    </div>
+                    <div class="price-item">
+                        <span>年费会员</span>
+                        <span>$1,200</span>
+                    </div>
+                    <div class="price-item">
+                        <span>预计日均收入/场</span>
+                        <span class="price-highlight">$205</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="pricingModelChart"></canvas>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-chart-bar"></i> 定价策略参考依据</h3>
+                <div class="reference-item">
+                    <strong>市场定价基准：</strong> 约克区现有体育场馆定价调研报告
+                </div>
+                <div class="reference-item">
+                    <strong>需求弹性分析：</strong> 体育经济学：需求与定价模型（Smith, 2022）
+                </div>
+                <div class="reference-item">
+                    <strong>会员定价策略：</strong> IHRSA健身行业定价基准报告
+                    <a href="https://www.ihrsa.org/" target="_blank">行业报告</a>
+                </div>
+                <div class="reference-item">
+                    <strong>分时定价模型：</strong> 动态定价在休闲产业中的应用研究（Johnson, 2021）
+                </div>
+            </div>
+        </section>
+        
+        <section id="cost" class="financial-section">
+            <div class="section-header">
+                <h2>成本详细分析</h2>
+                <p>项目投资与运营成本的全面分解（更新人工与维护成本）</p>
+            </div>
+
+            <div class="financial-grid">
+                <div class="financial-card">
+                    <h3><i class="fas fa-hard-hat"></i> 初始投资成本</h3>
+                    <div class="cost-item">
+                        <span>建筑施工</span>
+                        <span>$5,000,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>运动地板系统</span>
+                        <span>$450,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>可转换隔断系统</span>
+                        <span>$120,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>照明与音响系统</span>
+                        <span>$180,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>家具与设备</span>
+                        <span>$150,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>初始营销推广</span>
+                        <span>$100,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>总计</span>
+                        <span>$6,000,000</span>
+                    </div>
+                </div>
+                
+                <div class="financial-card">
+                    <h3><i class="fas fa-tools"></i> 年度运营成本（更新）</h3>
+                    <div class="cost-item">
+                        <span>人工成本</span>
+                        <span>$150,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>水电费用</span>
+                        <span>$100,200</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>维护与维修</span>
+                        <span>$76,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>保险费用</span>
+                        <span>$42,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>营销推广</span>
+                        <span>$60,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>软件系统</span>
+                        <span>$25,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>其他杂费</span>
+                        <span>$35,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>总计</span>
+                        <span>$488,200</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 成本数据参考来源</h3>
+                <div class="reference-item">
+                    <strong>建筑施工成本：</strong> 加拿大统计局2023年商业建筑成本报告
+                    <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/230713/dq230713a-eng.htm" target="_blank">查看报告</a>
+                </div>
+                <div class="reference-item">
+                    <strong>人工成本估算：</strong> 加拿大Job Bank休闲设施管理薪资数据
+                    <a href="https://www.jobbank.gc.ca/" target="_blank">数据来源</a>
+                </div>
+                <div class="reference-item">
+                    <strong>维护成本：</strong> 国际设施管理协会(IFMA)行业基准报告
+                    <a href="https://www.ifma.org/" target="_blank">行业报告</a>
+                </div>
+                <div class="reference-item">
+                    <strong>水电费用：</strong> 安大略省能源委员会商业用电费率
+                    <a href="https://www.oeb.ca/" target="_blank">费率详情</a>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="costBreakdownChart"></canvas>
+            </div>
+        </section>
+        
+        <section id="financial">
+            <div class="section-header">
+                <h2>财务预测与收入模型</h2>
+                <p>基于混合方案(6羽毛球+14匹克球)的五年现金流预测（全款投资模型）</p>
+            </div>
+
+            <div class="financial-grid">
+                <div class="financial-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> 年度收入预测</h3>
+                    <div class="cost-item">
+                        <span>羽毛球场地收入</span>
+                        <span>$328,500</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>匹克球场地收入</span>
+                        <span>$1,051,200</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>附加服务收入</span>
+                        <span>$85,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>会员费收入</span>
+                        <span>$120,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>企业活动收入</span>
+                        <span>$65,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>其他收入</span>
+                        <span>$35,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>总收入</span>
+                        <span class="price-highlight">$1,684,700</span>
+                    </div>
+                </div>
+                
+                <div class="financial-card">
+                    <h3><i class="fas fa-calculator"></i> 年度利润预测（全款投资）</h3>
+                    <div class="cost-item">
+                        <span>总收入</span>
+                        <span>$1,684,700</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>运营成本</span>
+                        <span>$488,200</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>设备折旧</span>
+                        <span>$150,000</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>税前利润</span>
+                        <span class="price-highlight">$1,046,500</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>税费 (25%)</span>
+                        <span>$261,625</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>净利润</span>
+                        <span class="price-highlight" style="color: #27ae60;">$784,875</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financial-note">
+                <p><strong>财务说明：</strong> 年度净利润计算已考虑设备折旧（直线法，10年折旧期）。假设项目为全款投资，无贷款利息。人工成本更新为$150,000，维护成本更新为$76,000，总运营成本减少$41,400。</p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="revenueProjectionChart"></canvas>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-file-alt"></i> 财务模型参考依据</h3>
+                <div class="reference-item">
+                    <strong>收入预测模型：</strong> 体育场馆运营财务模型（Deloitte行业报告）
+                </div>
+                <div class="reference-item">
+                    <strong>折旧政策：</strong> 加拿大税务局(CCA)第8类资产折旧规则
+                    <a href="https://www.canada.ca/en/revenue-agency.html" target="_blank">官方指南</a>
+                </div>
+                <div class="reference-item">
+                    <strong>税率基准：</strong> 安大略省企业税率标准（联邦+省）
+                </div>
+                <div class="reference-item">
+                    <strong>利用率假设：</strong> 基于约克区同类场馆运营数据调研
+                </div>
+            </div>
+        </section>
+        
+        <section id="roi" class="roi-section">
+            <div class="section-header">
+                <h2>投资回报分析（全款投资）</h2>
+                <p>基于600万加币总投资和各方案详细财务数据</p>
+            </div>
+
+            <div class="roi-details-grid">
+                <!-- 基准方案 -->
+                <div class="roi-detail-card">
+                    <h3>基准方案：混合型场地 (6羽毛球 + 14匹克球)</h3>
+                    
+                    <div class="facility-config">
+                        <div>
+                            <h4>场地配置</h4>
+                            <ul>
+                                <li>6个标准羽毛球场</li>
+                                <li>14个标准匹克球场</li>
+                                <li>可转换隔断系统</li>
+                                <li>多功能区：1,080 ft²</li>
+                                <li>服务区：3,000 ft²</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>主要服务</h4>
+                            <ul>
+                                <li>场地租赁服务</li>
+                                <li>会员计划</li>
+                                <li>企业包场活动</li>
+                                <li>基础培训课程</li>
+                                <li>饮料小吃服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <table class="financial-detail-table">
+                        <tr>
+                            <th colspan="2">财务预测（年）</th>
+                        </tr>
+                        <tr class="sub-header">
+                            <td colspan="2">收入来源</td>
+                        </tr>
+                        <tr>
+                            <td>羽毛球场地收入</td>
+                            <td>$328,500</td>
+                        </tr>
+                        <tr>
+                            <td>匹克球场地收入</td>
+                            <td>$1,051,200</td>
+                        </tr>
+                        <tr>
+                            <td>附加服务收入</td>
+                            <td>$85,000</td>
+                        </tr>
+                        <tr>
+                            <td>会员费收入</td>
+                            <td>$120,000</td>
+                        </tr>
+                        <tr>
+                            <td>企业活动收入</td>
+                            <td>$65,000</td>
+                        </tr>
+                        <tr>
+                            <td>其他收入</td>
+                            <td>$35,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总收入</td>
+                            <td>$1,684,700</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">支出</td>
+                        </tr>
+                        <tr>
+                            <td>运营成本</td>
+                            <td>$488,200</td>
+                        </tr>
+                        <tr>
+                            <td>设备折旧</td>
+                            <td>$150,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总支出</td>
+                            <td>$638,200</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>税前利润</td>
+                            <td>$1,046,500</td>
+                        </tr>
+                        <tr>
+                            <td>税费 (25%)</td>
+                            <td>$261,625</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>净利润</td>
+                            <td>$784,875</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">投资回报指标</td>
+                        </tr>
+                        <tr>
+                            <td>总投资</td>
+                            <td>$6,000,000</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回收期</td>
+                            <td>7.7年</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回报率 (ROI)</td>
+                            <td>13.1%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- 最优方案 -->
+                <div class="roi-detail-card">
+                    <h3>最优方案：混合场地+增值服务</h3>
+                    
+                    <div class="facility-config">
+                        <div>
+                            <h4>场地配置</h4>
+                            <ul>
+                                <li>6个标准羽毛球场</li>
+                                <li>14个标准匹克球场</li>
+                                <li>可转换隔断系统</li>
+                                <li>团体训练工作室</li>
+                                <li>健康饮品吧</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>主要服务</h4>
+                            <ul>
+                                <li>场地租赁服务</li>
+                                <li>高级会员计划</li>
+                                <li>企业团队建设活动</li>
+                                <li>青少年训练营</li>
+                                <li>专业私教课程</li>
+                                <li>健康餐饮服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <table class="financial-detail-table">
+                        <tr>
+                            <th colspan="2">财务预测（年）</th>
+                        </tr>
+                        <tr class="sub-header">
+                            <td colspan="2">收入来源</td>
+                        </tr>
+                        <tr>
+                            <td>羽毛球场地收入</td>
+                            <td>$328,500</td>
+                        </tr>
+                        <tr>
+                            <td>匹克球场地收入</td>
+                            <td>$1,051,200</td>
+                        </tr>
+                        <tr>
+                            <td>附加服务收入</td>
+                            <td>$85,000</td>
+                        </tr>
+                        <tr>
+                            <td>会员费收入</td>
+                            <td>$180,000</td>
+                        </tr>
+                        <tr>
+                            <td>企业活动收入</td>
+                            <td>$150,000</td>
+                        </tr>
+                        <tr>
+                            <td>训练营收入</td>
+                            <td>$95,000</td>
+                        </tr>
+                        <tr>
+                            <td>餐饮服务收入</td>
+                            <td>$75,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总收入</td>
+                            <td>$1,964,700</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">支出</td>
+                        </tr>
+                        <tr>
+                            <td>运营成本</td>
+                            <td>$538,200</td>
+                        </tr>
+                        <tr>
+                            <td>设备折旧</td>
+                            <td>$160,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总支出</td>
+                            <td>$698,200</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>税前利润</td>
+                            <td>$1,266,500</td>
+                        </tr>
+                        <tr>
+                            <td>税费 (25%)</td>
+                            <td>$316,625</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>净利润</td>
+                            <td>$949,875</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">投资回报指标</td>
+                        </tr>
+                        <tr>
+                            <td>总投资</td>
+                            <td>$6,000,000</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回收期</td>
+                            <td>6.3年</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回报率 (ROI)</td>
+                            <td>15.8%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- 增值方案 -->
+                <div class="roi-detail-card">
+                    <h3>增值方案：混合场地+高尔夫</h3>
+                    
+                    <div class="facility-config">
+                        <div>
+                            <h4>场地配置</h4>
+                            <ul>
+                                <li>4个标准羽毛球场</li>
+                                <li>10个标准匹克球场</li>
+                                <li>4个室内高尔夫模拟器</li>
+                                <li>贵宾休息区：1,200 ft²</li>
+                                <li>专业教练区</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>主要服务</h4>
+                            <ul>
+                                <li>场地租赁服务</li>
+                                <li>高尔夫模拟体验</li>
+                                <li>专业高尔夫指导</li>
+                                <li>VIP会员服务</li>
+                                <li>高端企业活动</li>
+                                <li>高尔夫联赛</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <table class="financial-detail-table">
+                        <tr>
+                            <th colspan="2">财务预测（年）</th>
+                        </tr>
+                        <tr class="sub-header">
+                            <td colspan="2">收入来源</td>
+                        </tr>
+                        <tr>
+                            <td>羽毛球场地收入</td>
+                            <td>$218,500</td>
+                        </tr>
+                        <tr>
+                            <td>匹克球场地收入</td>
+                            <td>$751,200</td>
+                        </tr>
+                        <tr>
+                            <td>高尔夫模拟器收入</td>
+                            <td>$438,000</td>
+                        </tr>
+                        <tr>
+                            <td>高尔夫私教收入</td>
+                            <td>$150,000</td>
+                        </tr>
+                        <tr>
+                            <td>VIP会员收入</td>
+                            <td>$180,000</td>
+                        </tr>
+                        <tr>
+                            <td>企业活动收入</td>
+                            <td>$120,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总收入</td>
+                            <td>$1,857,700</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">支出</td>
+                        </tr>
+                        <tr>
+                            <td>运营成本</td>
+                            <td>$548,200</td>
+                        </tr>
+                        <tr>
+                            <td>设备折旧</td>
+                            <td>$190,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总支出</td>
+                            <td>$738,200</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>税前利润</td>
+                            <td>$1,119,500</td>
+                        </tr>
+                        <tr>
+                            <td>税费 (25%)</td>
+                            <td>$279,875</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>净利润</td>
+                            <td>$839,625</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">投资回报指标</td>
+                        </tr>
+                        <tr>
+                            <td>总投资</td>
+                            <td>$6,550,000</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回收期</td>
+                            <td>7.8年</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回报率 (ROI)</td>
+                            <td>12.8%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- 高利润方案 -->
+                <div class="roi-detail-card">
+                    <h3>高利润方案：综合优化策略</h3>
+                    
+                    <div class="facility-config">
+                        <div>
+                            <h4>场地配置</h4>
+                            <ul>
+                                <li>5个标准羽毛球场</li>
+                                <li>12个标准匹克球场</li>
+                                <li>专业健身区：1,500 ft²</li>
+                                <li>团体训练工作室</li>
+                                <li>健康饮品吧</li>
+                                <li>太阳能供电系统</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>主要服务</h4>
+                            <ul>
+                                <li>场地租赁服务</li>
+                                <li>健身会员计划</li>
+                                <li>团体训练课程</li>
+                                <li>专业私教服务</li>
+                                <li>健康餐饮服务</li>
+                                <li>企业健康计划</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <table class="financial-detail-table">
+                        <tr>
+                            <th colspan="2">财务预测（年）</th>
+                        </tr>
+                        <tr class="sub-header">
+                            <td colspan="2">收入来源</td>
+                        </tr>
+                        <tr>
+                            <td>羽毛球场地收入</td>
+                            <td>$273,500</td>
+                        </tr>
+                        <tr>
+                            <td>匹克球场地收入</td>
+                            <td>$901,200</td>
+                        </tr>
+                        <tr>
+                            <td>健身会员收入</td>
+                            <td>$250,000</td>
+                        </tr>
+                        <tr>
+                            <td>私教课程收入</td>
+                            <td>$180,000</td>
+                        </tr>
+                        <tr>
+                            <td>团体训练收入</td>
+                            <td>$120,000</td>
+                        </tr>
+                        <tr>
+                            <td>企业健康计划</td>
+                            <td>$150,000</td>
+                        </tr>
+                        <tr>
+                            <td>餐饮服务收入</td>
+                            <td>$85,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总收入</td>
+                            <td>$1,959,700</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">支出</td>
+                        </tr>
+                        <tr>
+                            <td>运营成本</td>
+                            <td>$518,200</td>
+                        </tr>
+                        <tr>
+                            <td>设备折旧</td>
+                            <td>$180,000</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td>总支出</td>
+                            <td>$698,200</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>税前利润</td>
+                            <td>$1,261,500</td>
+                        </tr>
+                        <tr>
+                            <td>税费 (25%)</td>
+                            <td>$315,375</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>净利润</td>
+                            <td>$946,125</td>
+                        </tr>
+                        
+                        <tr class="sub-header">
+                            <td colspan="2">投资回报指标</td>
+                        </tr>
+                        <tr>
+                            <td>总投资</td>
+                            <td>$6,370,000</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回收期</td>
+                            <td>6.7年</td>
+                        </tr>
+                        <tr class="roi-row">
+                            <td>投资回报率 (ROI)</td>
+                            <td>14.9%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="reference-section">
+                <h3><i class="fas fa-calculator"></i> 投资回报分析参考依据</h3>
+                <div class="reference-item">
+                    <strong>投资回报模型：</strong> 体育设施投资回报分析框架（KPMG行业报告）
+                </div>
+                <div class="reference-item">
+                    <strong>收入预测方法：</strong> 基于约克区同类场馆实际运营数据
+                </div>
+                <div class="reference-item">
+                    <strong>成本估算标准：</strong> 加拿大商业体育设施运营成本基准
+                </div>
+                <div class="reference-item">
+                    <strong>税率计算：</strong> 安大略省企业税率标准（2023年）
+                </div>
+            </div>
+            
+            <div class="roi-improvement">
+                <h3>提高投资回报率的策略</h3>
+                <p>通过以下策略组合，年净利润可提升至$1,250,000，回收期缩短至4.8年，ROI提升至20.8%</p>
+                
+                <div class="improvement-grid">
+                    <div class="improvement-card">
+                        <h4><i class="fas fa-chart-line"></i> 增加收益策略</h4>
+                        <ul>
+                            <li>引入高利润活动：瑜伽/普拉提课程（利润$80/小时）</li>
+                            <li>企业团队建设活动包（$1,500/场）</li>
+                            <li>青少年运动训练营（$300/周）</li>
+                            <li>健康餐饮服务（预计年增收$75,000）</li>
+                            <li>赛事赞助与广告收入</li>
+                        </ul>
+                        <p><strong>预期收益提升：</strong> $250,000+/年</p>
+                    </div>
+                    
+                    <div class="improvement-card">
+                        <h4><i class="fas fa-money-bill-wave"></i> 优化定价策略</h4>
+                        <ul>
+                            <li>动态定价算法（高峰期溢价15-20%）</li>
+                            <li>会员订阅模式（年费$1,200）</li>
+                            <li>企业健康计划套餐</li>
+                            <li>非高峰时段促销（填充率提升至65%）</li>
+                            <li>多运动类型套餐折扣</li>
+                        </ul>
+                        <p><strong>预期收益提升：</strong> $180,000/年</p>
+                    </div>
+                    
+                    <div class="improvement-card">
+                        <h4><i class="fas fa-cogs"></i> 降低成本策略</h4>
+                        <ul>
+                            <li>太阳能供电系统（降低能源成本40%）</li>
+                            <li>智能照明/温控系统（节能25%）</li>
+                            <li>优化人员排班（减少人工成本15%）</li>
+                            <li>数字化运营（减少纸质消耗）</li>
+                            <li>批量采购维护合同</li>
+                        </ul>
+                        <p><strong>预期成本节省：</strong> $100,000/年</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="roiComparisonChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h2>开启体育中心项目</h2>
+            <p>获取完整商业计划书和财务模型，启动您的投资项目</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@sportscenterplan.ca</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (416) 555-0198</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Toronto, Ontario, Canada</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" class="action-button">
+                    <i class="fas fa-download"></i>
+                    下载完整商业计划书 (PDF)
+                </a>
+                <a href="#" class="action-button outline">
+                    <i class="fas fa-calculator"></i>
+                    获取交互式财务模型
+                </a>
+            </div>
+            
+            <p style="margin-top: 40px; opacity: 0.7; font-size: 0.95rem;">© 2023 多伦多Stouffville体育中心商业计划 | 数据更新于2023年11月</p>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化所有图表
+        document.addEventListener('DOMContentLoaded', function() {
+            // 市场趋势图
+            const marketCtx = document.getElementById('marketTrendChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: '羽毛球参与者',
+                        data: [850000, 780000, 880000, 950000, 1020000],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }, {
+                        label: '匹克球参与者',
+                        data: [120000, 180000, 350000, 650000, 980000],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '加拿大羽毛球与匹克球参与者增长趋势 (2019-2023)',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '参与者数量',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        },
+                        x: {
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // 定价模型图
+            const pricingCtx = document.getElementById('pricingModelChart').getContext('2d');
+            new Chart(pricingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    datasets: [
+                        {
+                            label: '羽毛球高峰时段 ($25)',
+                            data: [85, 75, 80, 90, 95, 60, 50],
+                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '羽毛球低峰时段 ($15)',
+                            data: [45, 40, 50, 55, 60, 30, 25],
+                            backgroundColor: 'rgba(52, 152, 219, 0.4)',
+                            borderColor: 'rgba(52, 152, 219, 0.8)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '匹克球高峰时段 ($33)',
+                            data: [92, 85, 88, 95, 97, 85, 75],
+                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                            borderColor: 'rgba(231, 76, 60, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '匹克球低峰时段 ($20)',
+                            data: [60, 55, 65, 70, 75, 50, 40],
+                            backgroundColor: 'rgba(231, 76, 60, 0.4)',
+                            borderColor: 'rgba(231, 76, 60, 0.8)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '每周场地利用率预测 (按运动类型和时段)',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            bodyFont: { size: 14 }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '场地利用率 (%)',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // 成本分解图
+            const costCtx = document.getElementById('costBreakdownChart').getContext('2d');
+            new Chart(costCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['人工成本', '水电费用', '维护维修', '保险费用', '营销推广', '软件系统', '其他杂费'],
+                    datasets: [{
+                        data: [30.7, 20.5, 15.6, 8.6, 12.3, 5.1, 7.2],
+                        backgroundColor: [
+                            '#3498db', '#2ecc71', '#e74c3c', '#f39c12', 
+                            '#9b59b6', '#1abc9c', '#34495e'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '年度运营成本分解（更新后）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'right',
+                            labels: { font: { size: 13 } }
+                        },
+                        tooltip: {
+                            bodyFont: { size: 14 }
+                        }
+                    }
+                }
+            });
+            
+            // 收入预测图
+            const revenueCtx = document.getElementById('revenueProjectionChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['第1年', '第2年', '第3年', '第4年', '第5年'],
+                    datasets: [{
+                        label: '总收入',
+                        data: [1425000, 1560000, 1684700, 1760000, 1820000],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }, {
+                        label: '净利润（更新后）',
+                        data: [550000, 650000, 784875, 860000, 950000],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '五年收入与净利润预测（单位：千加元）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '金额 (CAD)',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { 
+                                font: { size: 13 },
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // ROI比较图
+            const roiCtx = document.getElementById('roiComparisonChart').getContext('2d');
+            new Chart(roiCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['基准方案', '最优方案', '增值方案', '高利润方案'],
+                    datasets: [{
+                        label: '投资回收期 (年)',
+                        data: [7.7, 6.3, 7.8, 6.7],
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: '投资回报率 (%)',
+                        data: [13.1, 15.8, 12.8, 14.9],
+                        backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '不同方案投资回报比较（全款投资）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '数值',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,279 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
+    <script>
+        // 初始化所有图表
+        document.addEventListener('DOMContentLoaded', function() {
+            // 市场趋势图
+            const marketCtx = document.getElementById('marketTrendChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: '羽毛球参与者',
+                        data: [850000, 780000, 880000, 950000, 1020000],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }, {
+                        label: '匹克球参与者',
+                        data: [120000, 180000, 350000, 650000, 980000],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '加拿大羽毛球与匹克球参与者增长趋势 (2019-2023)',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '参与者数量',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        },
+                        x: {
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // 定价模型图
+            const pricingCtx = document.getElementById('pricingModelChart').getContext('2d');
+            new Chart(pricingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    datasets: [
+                        {
+                            label: '羽毛球高峰时段 ($25)',
+                            data: [85, 75, 80, 90, 95, 60, 50],
+                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '羽毛球低峰时段 ($15)',
+                            data: [45, 40, 50, 55, 60, 30, 25],
+                            backgroundColor: 'rgba(52, 152, 219, 0.4)',
+                            borderColor: 'rgba(52, 152, 219, 0.8)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '匹克球高峰时段 ($33)',
+                            data: [92, 85, 88, 95, 97, 85, 75],
+                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                            borderColor: 'rgba(231, 76, 60, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: '匹克球低峰时段 ($20)',
+                            data: [60, 55, 65, 70, 75, 50, 40],
+                            backgroundColor: 'rgba(231, 76, 60, 0.4)',
+                            borderColor: 'rgba(231, 76, 60, 0.8)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '每周场地利用率预测 (按运动类型和时段)',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            bodyFont: { size: 14 }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '场地利用率 (%)',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // 成本分解图
+            const costCtx = document.getElementById('costBreakdownChart').getContext('2d');
+            new Chart(costCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['人工成本', '水电费用', '维护维修', '保险费用', '营销推广', '软件系统', '其他杂费'],
+                    datasets: [{
+                        data: [30.7, 20.5, 15.6, 8.6, 12.3, 5.1, 7.2],
+                        backgroundColor: [
+                            '#3498db', '#2ecc71', '#e74c3c', '#f39c12', 
+                            '#9b59b6', '#1abc9c', '#34495e'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '年度运营成本分解（更新后）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'right',
+                            labels: { font: { size: 13 } }
+                        },
+                        tooltip: {
+                            bodyFont: { size: 14 }
+                        }
+                    }
+                }
+            });
+            
+            // 收入预测图
+            const revenueCtx = document.getElementById('revenueProjectionChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['第1年', '第2年', '第3年', '第4年', '第5年'],
+                    datasets: [{
+                        label: '总收入',
+                        data: [1425000, 1560000, 1684700, 1760000, 1820000],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }, {
+                        label: '净利润（更新后）',
+                        data: [550000, 650000, 784875, 860000, 950000],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '五年收入与净利润预测（单位：千加元）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '金额 (CAD)',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { 
+                                font: { size: 13 },
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+            
+            // ROI比较图
+            const roiCtx = document.getElementById('roiComparisonChart').getContext('2d');
+            new Chart(roiCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['基准方案', '最优方案', '增值方案', '高利润方案'],
+                    datasets: [{
+                        label: '投资回收期 (年)',
+                        data: [7.7, 6.3, 7.8, 6.7],
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: '投资回报率 (%)',
+                        data: [13.1, 15.8, 12.8, 14.9],
+                        backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '不同方案投资回报比较（全款投资）',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: { 
+                            position: 'top',
+                            labels: { font: { size: 14 } }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            title: { 
+                                display: true, 
+                                text: '数值',
+                                font: { size: 14, weight: 'bold' }
+                            },
+                            ticks: { font: { size: 13 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2094,277 +2368,6 @@
         </div>
     </footer>
 
-    <script>
-        // 初始化所有图表
-        document.addEventListener('DOMContentLoaded', function() {
-            // 市场趋势图
-            const marketCtx = document.getElementById('marketTrendChart').getContext('2d');
-            new Chart(marketCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2019', '2020', '2021', '2022', '2023'],
-                    datasets: [{
-                        label: '羽毛球参与者',
-                        data: [850000, 780000, 880000, 950000, 1020000],
-                        borderColor: '#3498db',
-                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                        tension: 0.3,
-                        fill: true,
-                        borderWidth: 3
-                    }, {
-                        label: '匹克球参与者',
-                        data: [120000, 180000, 350000, 650000, 980000],
-                        borderColor: '#e74c3c',
-                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                        tension: 0.3,
-                        fill: true,
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '加拿大羽毛球与匹克球参与者增长趋势 (2019-2023)',
-                            font: { size: 18, weight: 'bold' }
-                        },
-                        legend: { 
-                            position: 'top',
-                            labels: { font: { size: 14 } }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { 
-                                display: true, 
-                                text: '参与者数量',
-                                font: { size: 14, weight: 'bold' }
-                            },
-                            ticks: { font: { size: 13 } }
-                        },
-                        x: {
-                            ticks: { font: { size: 13 } }
-                        }
-                    }
-                }
-            });
-            
-            // 定价模型图
-            const pricingCtx = document.getElementById('pricingModelChart').getContext('2d');
-            new Chart(pricingCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                    datasets: [
-                        {
-                            label: '羽毛球高峰时段 ($25)',
-                            data: [85, 75, 80, 90, 95, 60, 50],
-                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
-                            borderColor: 'rgba(52, 152, 219, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: '羽毛球低峰时段 ($15)',
-                            data: [45, 40, 50, 55, 60, 30, 25],
-                            backgroundColor: 'rgba(52, 152, 219, 0.4)',
-                            borderColor: 'rgba(52, 152, 219, 0.8)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: '匹克球高峰时段 ($33)',
-                            data: [92, 85, 88, 95, 97, 85, 75],
-                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
-                            borderColor: 'rgba(231, 76, 60, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: '匹克球低峰时段 ($20)',
-                            data: [60, 55, 65, 70, 75, 50, 40],
-                            backgroundColor: 'rgba(231, 76, 60, 0.4)',
-                            borderColor: 'rgba(231, 76, 60, 0.8)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '每周场地利用率预测 (按运动类型和时段)',
-                            font: { size: 18, weight: 'bold' }
-                        },
-                        tooltip: { 
-                            mode: 'index', 
-                            intersect: false,
-                            bodyFont: { size: 14 }
-                        },
-                        legend: { 
-                            position: 'top',
-                            labels: { font: { size: 14 } }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { 
-                                display: true, 
-                                text: '场地利用率 (%)',
-                                font: { size: 14, weight: 'bold' }
-                            },
-                            ticks: { font: { size: 13 } }
-                        }
-                    }
-                }
-            });
-            
-            // 成本分解图
-            const costCtx = document.getElementById('costBreakdownChart').getContext('2d');
-            new Chart(costCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['人工成本', '水电费用', '维护维修', '保险费用', '营销推广', '软件系统', '其他杂费'],
-                    datasets: [{
-                        data: [30.7, 20.5, 15.6, 8.6, 12.3, 5.1, 7.2],
-                        backgroundColor: [
-                            '#3498db', '#2ecc71', '#e74c3c', '#f39c12', 
-                            '#9b59b6', '#1abc9c', '#34495e'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '年度运营成本分解（更新后）',
-                            font: { size: 18, weight: 'bold' }
-                        },
-                        legend: { 
-                            position: 'right',
-                            labels: { font: { size: 13 } }
-                        },
-                        tooltip: {
-                            bodyFont: { size: 14 }
-                        }
-                    }
-                }
-            });
-            
-            // 收入预测图
-            const revenueCtx = document.getElementById('revenueProjectionChart').getContext('2d');
-            new Chart(revenueCtx, {
-                type: 'line',
-                data: {
-                    labels: ['第1年', '第2年', '第3年', '第4年', '第5年'],
-                    datasets: [{
-                        label: '总收入',
-                        data: [1425000, 1560000, 1684700, 1760000, 1820000],
-                        borderColor: '#2ecc71',
-                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                        tension: 0.3,
-                        fill: true,
-                        borderWidth: 3
-                    }, {
-                        label: '净利润（更新后）',
-                        data: [550000, 650000, 784875, 860000, 950000],
-                        borderColor: '#3498db',
-                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                        tension: 0.3,
-                        fill: true,
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '五年收入与净利润预测（单位：千加元）',
-                            font: { size: 18, weight: 'bold' }
-                        },
-                        legend: { 
-                            position: 'top',
-                            labels: { font: { size: 14 } }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { 
-                                display: true, 
-                                text: '金额 (CAD)',
-                                font: { size: 14, weight: 'bold' }
-                            },
-                            ticks: { 
-                                font: { size: 13 },
-                                callback: function(value) {
-                                    return '$' + (value / 1000) + 'K';
-                                }
-                            }
-                        },
-                        x: {
-                            ticks: { font: { size: 13 } }
-                        }
-                    }
-                }
-            });
-            
-            // ROI比较图
-            const roiCtx = document.getElementById('roiComparisonChart').getContext('2d');
-            new Chart(roiCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['基准方案', '最优方案', '增值方案', '高利润方案'],
-                    datasets: [{
-                        label: '投资回收期 (年)',
-                        data: [7.7, 6.3, 7.8, 6.7],
-                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
-                        borderColor: 'rgba(52, 152, 219, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: '投资回报率 (%)',
-                        data: [13.1, 15.8, 12.8, 14.9],
-                        backgroundColor: 'rgba(46, 204, 113, 0.7)',
-                        borderColor: 'rgba(46, 204, 113, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '不同方案投资回报比较（全款投资）',
-                            font: { size: 18, weight: 'bold' }
-                        },
-                        legend: { 
-                            position: 'top',
-                            labels: { font: { size: 14 } }
-                        }
-                    },
-                    scales: {
-                        y: { 
-                            beginAtZero: true,
-                            title: { 
-                                display: true, 
-                                text: '数值',
-                                font: { size: 14, weight: 'bold' }
-                            },
-                            ticks: { font: { size: 13 } }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+
 </body>
 </html>
